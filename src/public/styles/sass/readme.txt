@@ -1,0 +1,1 @@
+When you do your changes, Open the terminal and type [npm run style] to apply your changes!
