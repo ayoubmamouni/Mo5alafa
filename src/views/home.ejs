@@ -5,13 +5,30 @@
     <title>Mo5alafa</title>
 </head>
 <body>
-    <div id="spinner"></div>
 
-
+    
     <section class="uploadVideos">
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" id="videoInput" name="userVideo">
-            <button type="button" id="uploadButton">Upload</button>
+        <video id="previewVideo" width="280" height="180" controls>
+            Your browser does not support the video tag.
+          </video>
+        <div id="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <form id="uploadVideoForm" action="/upload" method="post" enctype="multipart/form-data">
+            <div id="border">
+                <input type="file" id="videoInput" name="userVideo" accept="video/*" required>
+            </div>
+            <div class="userInfo">
+                <input type="text" name="NumberPlate" requird>
+            </div>
+            <div class="userInfo">
+                <input type="text" name="userName" requird>
+            </div>
+            <div class="userInfo">
+                <input type="number" name="userNumber" requird>
+            </div>
+            <div class="userInfo">
+                <textarea name="userDescription" id="userDescription" cols="30" rows="10"></textarea>
+            </div>
+            <button type="submit" id="uploadButton">Upload</button>
           </form>
     </section>
     

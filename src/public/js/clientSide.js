@@ -1,8 +1,17 @@
 const fileInput = document.getElementById("videoInput"); // get the file input element
-const uploadButton = document.getElementById("uploadButton"); // get the upload button element
-const spinner = document.getElementById("spinner");
+const uploadVideoForm = document.getElementById("uploadVideoForm");
+const loader = document.getElementById("lds-roller");
+const previewVideo = document.getElementById("previewVideo");
+fileInput.onchange = (e) => {
+  previewVideo.style.display = "block";
+  let file = e.target.files[0];
+  let blobURL = URL.createObjectURL(file);
+  previewVideo.src = blobURL;
+};
 
-uploadButton.addEventListener("click", () => {
+uploadVideoForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
   const file = fileInput.files[0]; // get the selected file
 
   if (file.size > 20 * 1024 * 1024) {
@@ -13,7 +22,8 @@ uploadButton.addEventListener("click", () => {
     return;
   }
 
-  spinner.style.display = "block"; // show the spinner
+  loader.style.display = "inline-block";
+  uploadVideoForm.style.display = "none";
 
   const formData = new FormData(); // create a new FormData object
   formData.append("video", file); // add the file to the form data
@@ -24,7 +34,8 @@ uploadButton.addEventListener("click", () => {
   })
     .then((response) => response.json())
     .then((data) => {
-      spinner.style.display = "none";
+      loader.style.display = "none";
+      uploadVideoForm.style.display = "block";
       console.log(data.msg);
     })
     .catch((error) => {
