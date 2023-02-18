@@ -5,8 +5,15 @@
     <title>Mo5alafa</title>
 </head>
 <body>
+    <div id="spinner"></div>
 
-    <h1>Mo5alafa</h1>
+
+    <section class="uploadVideos">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" id="videoInput" name="userVideo">
+            <button type="button" id="uploadButton">Upload</button>
+          </form>
+    </section>
     
 </body>
 </html>
