@@ -38,6 +38,8 @@ const upload = multer({
 });
 const startUpload = upload.single("video");
 router.post("/upload", async function (req, res) {
+  console.log(req.body);
+
   await startUpload(req, res, function (err) {
     if (err instanceof multer.MulterError) {
       console.log(err.message);

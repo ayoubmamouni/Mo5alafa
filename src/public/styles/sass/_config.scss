@@ -1,0 +1,24 @@
+// Fonts
+@font-face {
+  font-family: mainFont;
+  src: url(../../fonts/mainFont.ttf);
+}
+
+// remove browser default css
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  // user-select: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+@mixin flex($jc, $ai) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+}

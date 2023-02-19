@@ -1,22 +1,26 @@
+@import "./config";
 @import "./items/loader";
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+body {
+  font-family: mainFont;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 section.uploadVideos {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 800px;
   width: max-content;
   min-width: 300px;
   border-radius: 8px;
   padding: 20px;
   border: 2px solid #ccc;
-  // form
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,5 +59,31 @@ section.uploadVideos {
     font-size: 15px;
     margin-top: 15px;
     cursor: pointer;
+  }
+
+  // From
+  #uploadVideoForm {
+    .userInfo {
+      border: 3px solid #ccc;
+      border-radius: 10px;
+      margin: 10px 0;
+      input {
+        border-radius: 10px;
+        padding: 5px 10px;
+        outline: none;
+        font-size: 18px;
+        width: 100%;
+        border: 0;
+      }
+      textarea {
+        resize: none;
+        width: 100%;
+        height: 150px;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        padding: 5px 10px;
+      }
+    }
   }
 }

@@ -2,6 +2,13 @@ const fileInput = document.getElementById("videoInput"); // get the file input e
 const uploadVideoForm = document.getElementById("uploadVideoForm");
 const loader = document.getElementById("lds-roller");
 const previewVideo = document.getElementById("previewVideo");
+
+// user info
+const NumberPlate = document.getElementById("NumberPlate");
+const userName = document.getElementById("userName");
+const userNumber = document.getElementById("userNumber");
+const userDescription = document.getElementById("userDescription");
+
 fileInput.onchange = (e) => {
   previewVideo.style.display = "block";
   let file = e.target.files[0];
@@ -28,15 +35,35 @@ uploadVideoForm.addEventListener("submit", (e) => {
   const formData = new FormData(); // create a new FormData object
   formData.append("video", file); // add the file to the form data
 
+  const additionalInfo = {
+    NumberPlate: NumberPlate.value,
+    userName: userName.value,
+    userNumber: userNumber.value,
+    userDescription: userDescription.value,
+  };
+
+  const data = {
+    formData,
+    additionalInfo,
+  };
+
   fetch("/upload", {
     method: "POST",
-    body: formData,
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
   })
     .then((response) => response.json())
     .then((data) => {
       loader.style.display = "none";
       uploadVideoForm.style.display = "block";
       console.log(data.msg);
+      fileInput.value = "";
+      NumberPlate.value = "";
+      userName.value = "";
+      userNumber.value = "";
+      userDescription.value = "";
     })
     .catch((error) => {
       console.error("Error:", error);
